@@ -87,4 +87,13 @@ Thông tin của anh chị đã được ghi lại, mọi thắc mắc xin liên
 
 https://www.facebook.com/ChatBot-V%C3%AC-mi%E1%BB%81n-Trung-101198895190244
 
-
+# Cấu trúc của project:
+  - Đây là cấu trúc của 1 project NodeJs bao gồm  :
+    + file node_modules : chưa các Node modules
+    + file src
+      *
+    + file package-lock.json
+    + file package.json
+    + file .env
+    + file .env.example
+  
