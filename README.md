@@ -1,7 +1,7 @@
 # 👨‍👦‍👦 SE04-Nhóm 24.1
 # Đề tài: Xây dựng Chatbot
   
-# Thành viên
+# Thành viên:
   - Đinh Phú Hoàng Hiệp  
   - Trần Trung Hiếu  
   - Trần Long Vũ 
@@ -13,7 +13,7 @@
   
 # Cấu trúc của project:
   - Đây là cấu trúc của 1 project NodeJs bao gồm  :
-    + file node_modules : chưa các Node modules
+    + file node_modules : chứa các Node modules
     + file src *
     + file package-lock.json
     + file package.json
