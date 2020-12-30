@@ -3,6 +3,7 @@ import request from "request";
 import homepageService from "../services/homepageService";
 import chatbotService from "../services/chatbotService";
 import templateMessage from "../services/templateMessage";
+import e from "express";
 
 // const fasttext = require("fasttext");
 //   const path = require('path');
@@ -95,6 +96,10 @@ let postWebhook = (req, res) => {
 // Handles messages events
 let handleMessage = async (sender_psid, received_message) => {
   let response;
+  let response1 = {
+    "text" : "bot không nhận diện được, xin nhập lại"
+  };
+
   if (received_message.text){
 
     let objIntent = received_message.nlp.intents[0];
@@ -104,6 +109,11 @@ let handleMessage = async (sender_psid, received_message) => {
 
     let intentName = ''
     let intentConf = 0
+
+    if (received_message.text === "Làm mới hội thoại"){
+      await chatbotService.sendMessageWelcomeUser(sender_psid);
+      arr = [];
+    }
     if(objIntent) {
       intentName = objIntent.name;
       intentConf = objIntent.confidence;
@@ -116,29 +126,86 @@ let handleMessage = async (sender_psid, received_message) => {
     else if (intentName === 'greet' && intentConf >= 0.7){
       await chatbotService.sendMessageWelcomeUser(sender_psid);
     }
-    else if (!arr[1]){
-      response = {
-        "text" : "Bạn hãy cho biết họ và tên đầy đủ ?"
-      }
-      await chatbotService.sendMessage(sender_psid,response);
+    if (!arr[1] && arr[0]){
+
       if (objEntity && objEntity.name === "ho_ten"){
         arr.push(objEntity.value);
+        response = {
+          "text"  : "Xin cho biết ngày tháng năm sinh của bạn (vd 23/12/1998)"
+        }
+        await chatbotService.sendMessage(sender_psid,response);
       }
       else {
+        
+        await chatbotService.sendMessage(sender_psid,response1);
+      }
+      
+    }
+    else if (arr[1] && !arr[2]){
+    
+      if (objEntity && objEntity.name === "wit$datetime"){
+        arr.push(objEntity.value);
         response = {
-          "text" : "bot không nhận diện được, xin nhập lại"
+          "text" : "Số căn cước / CMND ?"
         }
+        await chatbotService.sendMessage(sender_psid,response);
+      } else {
+       
+        await chatbotService.sendMessage(sender_psid,response1);
       }
-      
-      
     }
-    else if (!arr[2] && arr[1]){
-      response = {
-        "text"  : "Xin cho biết ngày tháng năm sinh của bạn (vd 23/12/1998)"
+    else if (!arr[3] && arr[2]){
+     
+
+      if (objEntity && objEntity.name ==="wit$number" || objEntity.name === "wit$phone_number"){
+        arr.push(objEntity.value);
+        response = {
+          "text" : "Quê quán của bạn ở đâu?"
+        }
+        await chatbotService.sendMessage(sender_psid,response);
+
+      }else {
+        
+        await chatbotService.sendMessage(sender_psid,response1);
       }
-      await chatbotService.sendMessage(sender_psid,response);
-      arr[2] = objEntity.value;
+    }else if (!arr[4] && arr[3]){
+      
+      if (objEntity && objEntity.name ==="dia_diem" ){
+        arr.push(objEntity.value);
+        response = {
+          "text" : "Số điện thoại liên lạc của bạn là gì ?"
+        }
+        await chatbotService.sendMessage(sender_psid,response);
+      }else {
+       
+        await chatbotService.sendMessage(sender_psid,response1);
+      }
+    }else if (!arr[5] && arr[4]){
+      
+      if (objEntity &&  objEntity.name === "wit$phone_number"){
+        arr.push(objEntity.value);
+        response = {
+          "text" : "Mức độ khẩn cấp về tình hình hiện tại ?"
+        }
+        await chatbotService.sendMessage(sender_psid,response);
+      }else {
+
+        await chatbotService.sendMessage(sender_psid,response1);
+      }
+    }else if (!arr[6] && arr[5]){
+     
+      if (objEntity && objEntity.name ==="tinh_trang"){
+        arr.push(objEntity.value);
+        response = {
+          "text" : "Tạm thời là thế đã"
+        }
+        await chatbotService.sendMessage(sender_psid,response);
+      }else {
+        await chatbotService.sendMessage(sender_psid,response1);
+      }
     }
+    console.log("---------------------"+ objEntity.name);
+    console.log("Mang "+ arr);
     
   }
 }
@@ -154,15 +221,22 @@ let handlePostback = async (sender_psid, received_postback) => {
   // Set the response based on the postback payload
   switch (payload) {
     case "Làm mới hội thoại":
+      arr = []
       await chatbotService.sendMessageWelcomeUser(sender_psid);
       break;
     case "canhotro":
+      var text = "cần hỗ trợ";
       response = {
         "text": "Đối với người muốn được hỗ trợ, chúng tôi cần bạn cung cấp thông tin dưới đây"
       }
+      
       await chatbotService.sendMessage(sender_psid,response);
-      arr[0] = "Cần hỗ trợ";
-
+      arr.push(text);
+      response = {
+        "text" : "Họ và tên của bạn là gì",
+      }
+      await chatbotService.sendMessage(sender_psid,response);
+      console.log("Mang la" +arr);
       break;
 
   }
