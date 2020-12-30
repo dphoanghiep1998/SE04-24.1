@@ -1,23 +1,24 @@
 {
-  "name": "chatbot",
+  "name": "new-folder",
   "version": "1.0.0",
-  "description": "chatbot",
+  "description": "chatbto",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec babel-node src/server.js"
   },
-  "author": "hiepdinh",
+  "author": "hiep",
   "license": "ISC",
   "dependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/node": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
+    "@babel/core": "^7.12.9",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.7",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
-    "nodemon": "^2.0.5",
+    "fasttext": "^1.0.0",
+    "nodemon": "^2.0.6",
     "request": "^2.88.2"
   }
 }
