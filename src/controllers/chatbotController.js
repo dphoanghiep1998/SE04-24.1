@@ -9,7 +9,7 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 
 var arr = {};
 
-var mode = 0;
+var tt = 0;
 
 
 let getHomePage = (req, res) => {
@@ -123,7 +123,7 @@ let handleMessage = async (sender_psid, received_message) => {
       await chatbotService.sendMessageWelcomeUser(sender_psid);
     }
     else {
-      if (mode == 1) {
+      if (tt == 1) {
 
         if (!arr[sender_psid][1]) {
 
@@ -407,7 +407,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       await chatbotService.sendMessageWelcomeUser(sender_psid);
       break;
     case "canhotro":
-      mode = 1;
+      tt = 1;
       var text = "cần hỗ trợ";
       response = {
         "text": "Đối với người muốn được hỗ trợ, chúng tôi cần bạn cung cấp thông tin dưới đây"
