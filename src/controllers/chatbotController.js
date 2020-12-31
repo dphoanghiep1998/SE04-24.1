@@ -182,7 +182,7 @@ let handleMessage = async (sender_psid, received_message) => {
         } else if (!arr[sender_psid][5]) {
 
           if (objEntity && objEntity.name === "wit$phone_number") {
-            arr.push(objEntity.value);
+            arr[sender_psid].push(objEntity.value);
             response = {
               "text": "Mức độ khẩn cấp về tình hình hiện tại ?"
             }
