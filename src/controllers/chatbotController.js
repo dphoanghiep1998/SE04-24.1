@@ -2,7 +2,7 @@ require("dotenv").config();
 import request from "request";
 import homepageService from "../services/homepageService";
 import chatbotService from "../services/chatbotService";
-
+import dbService from "../services/dbService";
 
 
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
@@ -10,7 +10,6 @@ const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 var arr = {};
 
 var tt = 0;
-
 
 let getHomePage = (req, res) => {
   return res.send("Xin chao");
@@ -120,17 +119,24 @@ let handleMessage = async (sender_psid, received_message) => {
       }
     }
     else if (intentName === 'greet' && intentConf >= 0.7) {
+      arr[sender_psid] = [];
       await chatbotService.sendMessageWelcomeUser(sender_psid);
     }
     else {
-      if (tt == 1) {
 
-        if (!arr[sender_psid][1]) {
+      if (tt == 1) {
+        if (received_message.text == "show org"){
+          response = {
+            "text" : "Hội cứu trợ chữ thập đỏ quốc gia (MTTQVN) \nHội Nhân đạo, tương thân tương ái (PCP) \nTrung tâm cứu trợ cứu nạn (MTTQVN)"
+          }
+          await chatbotService.sendMessage(sender_psid,response);
+        }
+        else if (!arr[sender_psid][1] && arr[sender_psid][0]) {
 
           if (objEntity && objEntity.name === "ho_ten") {
             arr[sender_psid].push(objEntity.value);
             response = {
-              "text": "Xin cho biết ngày tháng năm sinh của bạn (vd 23/12/1998)"
+              "text": "2. Xin cho biết ngày tháng năm sinh của bạn (vd 23/12/1998)"
             }
             await chatbotService.sendMessage(sender_psid, response);
           }
@@ -145,7 +151,7 @@ let handleMessage = async (sender_psid, received_message) => {
           if (objEntity && objEntity.name === "wit$datetime") {
             arr[sender_psid].push(objEntity.value);
             response = {
-              "text": "Số căn cước / CMND ví dụ (187238484) ?"
+              "text": "3. Số căn cước / CMND ví dụ (187238484) ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           } else {
@@ -159,7 +165,7 @@ let handleMessage = async (sender_psid, received_message) => {
           if (objEntity && objEntity.name === "wit$number" || objEntity.name === "wit$phone_number") {
             arr[sender_psid].push(objEntity.value);
             response = {
-              "text": "Quê quán (ví dụ số 10, ngách 23, quận 8, TPHCM )?"
+              "text": "4. Quê quán (ví dụ số 10, ngách 23, quận 8, TPHCM )?"
             }
             await chatbotService.sendMessage(sender_psid, response);
 
@@ -172,7 +178,7 @@ let handleMessage = async (sender_psid, received_message) => {
           if (objEntity && objEntity.name === "dia_diem") {
             arr[sender_psid].push(objEntity.value);
             response = {
-              "text": "Số điện thoại liên lạc của bạn là gì ?"
+              "text": "5. Số điện thoại liên lạc của bạn là gì ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           } else {
@@ -184,7 +190,7 @@ let handleMessage = async (sender_psid, received_message) => {
           if (objEntity && objEntity.name === "wit$phone_number") {
             arr[sender_psid].push(objEntity.value);
             response = {
-              "text": "Mức độ khẩn cấp về tình hình hiện tại ?"
+              "text": "6. Mức độ khẩn cấp về tình hình hiện tại ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           } else {
@@ -196,18 +202,18 @@ let handleMessage = async (sender_psid, received_message) => {
           if (objEntity && objEntity.name === "tinh_trang") {
             arr[sender_psid].push(objEntity.value);
             response = {
-              "text": "Ví trí hiện tại của bạn ?"
+              "text": "7. Ví trí hiện tại của bạn ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           } else {
             await chatbotService.sendMessage(sender_psid, response1);
           }
-        } else if (arr[sender_psid][7]==null) {
+        } else if (arr[sender_psid][7] == null) {
 
           if (objEntity && objEntity.name === "dia_diem") {
             arr[sender_psid].push(objEntity.value);
             response = {
-              "text": "Bạn có cần giúp đỡ về lương thực không ?"
+              "text": "8. Bạn có cần giúp đỡ về lương thực không ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           }
@@ -215,148 +221,143 @@ let handleMessage = async (sender_psid, received_message) => {
           else {
             await chatbotService.sendMessage(sender_psid, response1);
           }
-        } else if (arr[sender_psid][8]==null) {
+        } else if (arr[sender_psid][8] == null) {
 
           if (objEntity && objEntity.name === "dong_y") {
-            arr[sender_psid].push(1);
+            arr[sender_psid].push("lương thực");
             response = {
-              "text": "Bạn có cần giúp đỡ về y tế không ?"
+              "text": "9. Bạn có cần giúp đỡ về y tế không ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           } else if (objEntity && objEntity.name === "tu_choi") {
-            arr[sender_psid].push(0);
+            arr[sender_psid].push("không");
             response = {
-              "text": "Bạn có cần giúp đỡ về y tế không ?"
+              "text": "9. Bạn có cần giúp đỡ về y tế không ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           }
           else {
             await chatbotService.sendMessage(sender_psid, response1);
           }
-        } else if (arr[sender_psid][9]==null) {
+        } else if (arr[sender_psid][9] == null) {
 
           if (objEntity && objEntity.name === "dong_y") {
-            arr[sender_psid].push(1);
+            arr[sender_psid].push("y tế");
             response = {
-              "text": "Bạn có cần giúp đỡ về nước uống không ?"
+              "text": "10. Bạn có cần giúp đỡ về nước uống không ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           } else if (objEntity && objEntity.name === "tu_choi") {
-            arr[sender_psid].push(0);
+            arr[sender_psid].push("không");
             response = {
-              "text": "Bạn có cần giúp đỡ về nước uống không ?"
+              "text": "10. Bạn có cần giúp đỡ về nước uống không ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           }
           else {
             await chatbotService.sendMessage(sender_psid, response1);
           }
-        } else if (arr[sender_psid][10]==null) {
+        } else if (arr[sender_psid][10] == null) {
 
           if (objEntity && objEntity.name === "dong_y") {
-            arr[sender_psid].push(1);
+            arr[sender_psid].push("nước uống");
             response = {
-              "text": "Bạn có cần giúp đỡ về nơi ở không ?"
+              "text": "11. Bạn có cần giúp đỡ về nơi ở không ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           } else if (objEntity && objEntity.name === "tu_choi") {
-            arr[sender_psid].push(0);
+            arr[sender_psid].push("không");
             response = {
-              "text": "Bạn có cần giúp đỡ về nơi ở không ?"
+              "text": "11. Bạn có cần giúp đỡ về nơi ở không ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           }
           else {
             await chatbotService.sendMessage(sender_psid, response1);
           }
-        } else if (arr[sender_psid][11]==null) {
+        } else if (arr[sender_psid][11] == null) {
 
           if (objEntity && objEntity.name === "dong_y") {
-            arr[sender_psid].push(1);
+            arr[sender_psid].push("nơi ở");
             response = {
-              "text": "Bạn có cần giúp đỡ về tiền mặt không ?"
+              "text": "12. Bạn có cần giúp đỡ về tiền mặt không ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           } else if (objEntity && objEntity.name === "tu_choi") {
-            arr[sender_psid].push(0);
+            arr[sender_psid].push("không");
             response = {
-              "text": "Bạn có cần giúp đỡ về tiền mặt không ?"
+              "text": "12. Bạn có cần giúp đỡ về tiền mặt không ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           }
           else {
             await chatbotService.sendMessage(sender_psid, response1);
           }
-        } else if (arr[sender_psid][12]==null) {
+        } else if (arr[sender_psid][12] == null) {
 
           if (objEntity && objEntity.name === "dong_y") {
-            arr[sender_psid].push(1);
+            arr[sender_psid].push("tiền mặt");
             response = {
-              "text": "Bạn đang ở cùng bao nhiêu người ?"
+              "text": "13. Bạn đang ở cùng bao nhiêu người (ví dụ 1 2 3) ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           } else if (objEntity && objEntity.name === "tu_choi") {
-            arr[sender_psid].push(objEntity.value);
+            arr[sender_psid].push("không");
             response = {
-              "text": "Bạn đang ở cùng bao nhiêu người"
+              "text": "13. Bạn đang ở cùng bao nhiêu người (ví dụ 1 2 3) ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           }
           else {
             await chatbotService.sendMessage(sender_psid, response1);
           }
-        } else if (arr[sender_psid][13]==null) {
+        } else if (arr[sender_psid][13] == null) {
 
           if (objEntity && objEntity.name === "wit$number" || objEntity.name === "so_luong") {
             arr[sender_psid].push(objEntity.value);
             response = {
-              "text": "Có người bị thương không ?"
+              "text": "14. Có mấy người bị thương (ví dụ 1 2 3 4 5)  ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
           }
           else {
             await chatbotService.sendMessage(sender_psid, response1);
           }
-        } else if (arr[sender_psid][14]==null) {
+        } else if (arr[sender_psid][14] == null) {
 
-          if (objEntity && objEntity.name === "dong_y") {
-            arr[sender_psid].push(1);
+          if (objEntity && objEntity.name === "wit$number") {
+            arr[sender_psid].push(objEntity.value);
             response = {
-              "text": "Ước tính tổng thiệt hại tài sản (quy đổi ra tiền mặt) ?"
+              "text": "15. Ước tính tổng thiệt hại tài sản (quy đổi ra tiền mặt ví dụ 2000 đồng) ?"
             }
             await chatbotService.sendMessage(sender_psid, response);
-          } else if (objEntity && objEntity.name === "tu_choi") {
-            arr[sender_psid].push(0);
-            response = {
-              "text": "Ước tính tổng thiệt hại tài sản (quy đổi ra tiền mặt) ?"
-            }
-            await chatbotService.sendMessage(sender_psid, response);
-          }
+          } 
           else {
             await chatbotService.sendMessage(sender_psid, response1);
           }
-        } else if (arr[sender_psid][15]==null) {
+        } else if (arr[sender_psid][15] == null) {
           if (objEntity && objEntity.name === "wit$amount_of_money") {
             arr[sender_psid].push(objEntity.value);
             response = {
-              "text": "Bạn có muốn gửi thông tin của mình đến tổ chức cứu trợ cứu nạn thuộc danh sách của chúng tôi không ? \n Gõ 'show org' để hiển thị danh sách"
+              "text": "16. Bạn có muốn gửi thông tin của mình đến tổ chức cứu trợ cứu nạn thuộc danh sách của chúng tôi không ? \n Gõ 'show org' để hiển thị danh sách"
             }
             await chatbotService.sendMessage(sender_psid, response);
           } else {
             await chatbotService.sendMessage(sender_psid, response1);
           }
-        } else if (arr[sender_psid][16]==null) {
+        } else if (arr[sender_psid][16] == null) {
+         
           if (objEntity && objEntity.name === "tu_choi") {
-            arr[sender_psid].push(0);
+            arr[sender_psid].push("không");
             response = {
-              "text": "Bạn muốn cho Page biết thêm thông tin gì, hãy ghi vào dưới nhé ! (Gõ No ) nếu không có !"
+              "text": "17. Bạn muốn cho Page biết thêm thông tin gì, hãy ghi vào dưới nhé ! (Gõ No  nếu không có !)"
 
             }
             await chatbotService.sendMessage(sender_psid, response);
           } else if (objEntity && objEntity.name === "dong_y") {
-            arr[sender_psid].push(1);
+            arr[sender_psid].push("có");
             response = {
-              "text": "Bạn muốn cho Page biết thêm thông tin gì, hãy ghi vào dưới nhé ! (Gõ No ) nếu không có !"
+              "text": "17. Bạn muốn cho Page biết thêm thông tin gì, hãy ghi vào dưới nhé ! (Gõ No  nếu không có !)"
 
             }
             await chatbotService.sendMessage(sender_psid, response);
@@ -364,30 +365,31 @@ let handleMessage = async (sender_psid, received_message) => {
           else {
             await chatbotService.sendMessage(sender_psid, response1);
           }
-        } else if (arr[sender_psid][17]==null) {
+        } else if (arr[sender_psid][17] == null) {
           if (objEntity && objEntity.name === "tu_choi") {
-            arr[sender_psid].push(0);
-            mode=0;
+            arr[sender_psid].push("không");
+            dbService.insertDB(arr[sender_psid]);
             response = {
-              "text": "Cảm ơn anh chị đã gửi thông tin, chúng tôi sẽ chuyển thông tin đến các bên liên quan !!!"
+              "text": "Cảm ơn bạn đã gửi thông tin, chúng tôi sẽ chuyển thông tin đến các bên liên quan !!! \n Chúc bạn an toàn, mạnh khỏe, hạnh phúc"
 
             }
             await chatbotService.sendMessage(sender_psid, response);
           } else {
-            
-            arr[sender_psid].push(received_message);
-            mode=0;
+
+            arr[sender_psid].push(received_message.text);
+            dbService.insertDB(arr[sender_psid]);
             response = {
-              "text": "Cảm ơn anh chị đã gửi thông tin, chúng tôi sẽ chuyển thông tin đến các bên liên quan !!!"
+              "text": "Cảm ơn bạn đã gửi thông tin, chúng tôi sẽ chuyển thông tin đến các bên liên quan !!!  \n Chúc bạn an toàn, mạnh khỏe, hạnh phúc"
 
             }
             await chatbotService.sendMessage(sender_psid, response);
           }
         }
         console.log("--------------------- " + objEntity.name);
-        console.log("Mang " + arr);
-      }
+        console.log("Mang " + arr[sender_psid]);
 
+
+      }
     }
   }
 }
@@ -402,10 +404,6 @@ let handlePostback = async (sender_psid, received_postback) => {
 
   // Set the response based on the postback payload
   switch (payload) {
-    case "Làm mới hội thoại":
-      arr[sender_psid] = []
-      await chatbotService.sendMessageWelcomeUser(sender_psid);
-      break;
     case "canhotro":
       tt = 1;
       var text = "cần hỗ trợ";
@@ -416,7 +414,7 @@ let handlePostback = async (sender_psid, received_postback) => {
       await chatbotService.sendMessage(sender_psid, response);
       arr[sender_psid].push(text);
       response = {
-        "text": "Họ và tên của bạn là gì (ví dụ Trần Văn Quảng)",
+        "text": "1. Họ và tên của bạn là gì (ví dụ Trần Văn Quảng)",
       }
       await chatbotService.sendMessage(sender_psid, response);
       console.log("Mang la" + arr);
