@@ -32,8 +32,8 @@
   - Deployment : Heroku sever
   - Editor : Vscode
 # Demo
-  FanPage : https://www.facebook.com/ChatBot-V%C3%AC-mi%E1%BB%81n-Trung-101198895190244/
-  App-link : https://vutranapp.herokuapp.com/
+  - FanPage : https://www.facebook.com/ChatBot-V%C3%AC-mi%E1%BB%81n-Trung-101198895190244/
+  - App-link : https://vutranapp.herokuapp.com/
 
 
 
