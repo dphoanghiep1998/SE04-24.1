@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
+
     <title>Cứu trợ miền Trung</title>
     <link rel="stylesheet" type="text/css" href="/css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -11,6 +12,7 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <title>Cứu trợ</title>
 </head>
+
 <body>
     <div id="header">
         <ul class="nav nav-tabs nav-fill" style="height: 50px; display: flex;">
@@ -23,21 +25,14 @@
     </div>
 
     <div id="container">
-        <div class="hotline">
-            <ul class="number">
-                <li><a href="#"><i class="fa fa-phone"></i> Hotline: 0961274163</a></li>
-            </ul>
-            <p>Tiếp nhận mọi yêu cầu cứu trợ 24/7 - Hoàn toàn miễn phí</p>
-            <p>***.com - Hệ thống tổng hợp thông tin ủng hộ đòng bào miền Trung</p>
-        </div>
         <div class="content">
             <div class="left">
                 <h3 style="margin-left: 25px;">Hộ dân cần cứu trợ</h3>
                 <button class="cancuu"><span>168</span>
-                <p>cần cứu trợ</p>
+                    <p>cần cứu trợ</p>
                 </button>
                 <button class="dacuu"><span>160</span>
-                <p>đã nhận cứu trợ</p>
+                    <p>đã nhận cứu trợ</p>
                 </button>
                 <p style="margin-left: 25px;">Đăng ký tại đây để nhận hỗ trợ từ các nhà hảo tâm</p>
                 <button class="dknhancuutro"><a href="#">Đăng ký nhận cứu trợ</a></button>
@@ -45,48 +40,50 @@
             <div class="right">
                 <h3 style="margin-left: 25px;">Nhà hảo tâm</h3>
                 <button class="sansang"><span>168</span>
-                <p>sẵn sàng</p>
+                    <p>sẵn sàng</p>
                 </button>
                 <p style="margin-left: 25px;">Đăng ký tại đây để ủng hộ đồng bào miền Trung</p>
                 <button class="dkungho"><a href="#">Đăng ký ủng hộ</a></button>
             </div>
-        </div>
-        <div class="banner">
-            <img src="/img/banner.png">
+            
         </div>
     </div>
 
     <div id="footer">
+        <div id="footer-content" style="margin-left: 10%;padding-top: 20px;">
         <h2>Hệ thống thông tin cứu trợ miền Trung</h2>
         <p>Mọi thông tin chi tiết xin liên hệ:</p>
-        <span>Hotline: 8888 8888</span>
-        <p>hoặc địa chỉ Facebook <a href="https://www.facebook.com/ChatBot-Vì-miền-Trung-101198895190244">www.facebook.com/ChatBot-Vì-miền-Trung-101198895190244</a></p>
-         <!-- Load Facebook SDK for JavaScript -->
-    <div id="fb-root"></div>
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          xfbml            : true,
-          version          : 'v9.0'
-        });
-      };
-
-      (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
-    <!-- Your Chat Plugin code -->
-    <div class="fb-customerchat"
-      attribution=setup_tool
-      page_id="101198895190244">
+        <span>Hotline: 0961274163</span>
+        <p>hoặc địa chỉ Facebook <a
+                href="https://www.facebook.com/ChatBot-Vì-miền-Trung-101198895190244">www.facebook.com/ChatBot-Vì-miền-Trung-101198895190244</a>
+        </p>
     </div>
+        <!-- Load Facebook SDK for JavaScript -->
+        <div id="fb-root"></div>
+        <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    xfbml: true,
+                    version: 'v9.0'
+                });
+            };
+
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+
+        <!-- Your Chat Plugin code -->
+        <div class="fb-customerchat" attribution=setup_tool page_id="101198895190244">
+        </div>
     </div>
+  
 
 
 
 </body>
+
 </html>

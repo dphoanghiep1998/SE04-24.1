@@ -12,9 +12,8 @@ var arr = {};
 var tt = 0;
 
 let getHomePage = (req, res) => {
-  return res.sendFile('index.html', { root: "src" + "/views" });
+  return res.render("index")
 };
-
 
 
 
