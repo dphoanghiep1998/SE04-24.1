@@ -12,7 +12,7 @@ var arr = {};
 var tt = 0;
 
 let getHomePage = (req, res) => {
-  return res.send("Xin chao");
+  return res.sendFile('index.html', { root: "src" + "/views" });
 };
 
 
