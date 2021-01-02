@@ -2,19 +2,18 @@ body {
     font-family: Arial;
     font-size: 16px;
     width: 100%;
-    margin: 0px auto;
+    margin: 0;
 }
 
 #header {
     height: 50px;
     width: 100%;
-    z-index: 2;
+    display: block;
 }
-
 
 #header ul {
     background: #052f58;
-    height: 50px;
+    height: 100%;
     margin: 0px;
     padding: 0px;
     padding-left: 90px;
@@ -29,27 +28,29 @@ body {
 #header ul li a {
     text-decoration: none;
     display: block;
-    height: 50px;
+    height: 100%;
     line-height: 50px;
     color: #FFF;
-    padding: 0px 20px;
+    padding-left: 50px;
 }
 
 #container {
-    margin-top: -16px;
+    height: calc(100vh - 230px);
+    display: block;
+    width: 100%;
+    float: left;
+
 }
 
 .hotline {
     background: red;
     height: 150px;
-    margin-top: 0px;
     text-align: center;
     color: white;
 }
 
 .hotline li {
     list-style: none;
-    padding-top: 15px;
 }
 
 .hotline li a {
@@ -60,11 +61,12 @@ body {
 
 .content {
     height: 300px;
-    margin-top: 20px;
-    width: 1000px;
-    margin-left: 200px;
+    margin-top: 10%;
+    width: 72%;
+    margin-left: 15%;
     display: flex;
 }
+
 
 .left {
     height: 250px;
@@ -155,16 +157,17 @@ span {
 }
 
 .banner img {
-    height: 300px;
-    width: 1000px;
-    margin-left: 200px;
+    height: 200px;
+    width: 72%;
+    margin-left: 15%;
 }
 
 #footer {
-    height: 200px;
+    height: 180px;
     background: #2e3338;
     color: white;
-    margin-top: 50px;
+    display: block;
+    clear: both;
 }
 
 h2 {
