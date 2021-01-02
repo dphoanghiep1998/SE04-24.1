@@ -1,0 +1,186 @@
+body {
+    font-family: Arial;
+    font-size: 16px;
+    width: 100%;
+    margin: 0px auto;
+}
+
+#header {
+    height: 50px;
+    width: 100%;
+    z-index: 2;
+}
+
+
+#header ul {
+    background: #052f58;
+    height: 50px;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 90px;
+    padding-right: 90px;
+}
+
+#header ul li {
+    list-style: none;
+    float: left;
+}
+
+#header ul li a {
+    text-decoration: none;
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    color: #FFF;
+    padding: 0px 20px;
+}
+
+#container {
+    margin-top: -16px;
+}
+
+.hotline {
+    background: red;
+    height: 150px;
+    margin-top: 0px;
+    text-align: center;
+    color: white;
+}
+
+.hotline li {
+    list-style: none;
+    padding-top: 15px;
+}
+
+.hotline li a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.content {
+    height: 300px;
+    margin-top: 20px;
+    width: 1000px;
+    margin-left: 200px;
+    display: flex;
+}
+
+.left {
+    height: 250px;
+    width: 700px;
+    margin-right: 50px;
+    border: 1px solid #aaa;
+    border-radius: .3rem !important;
+}
+
+.left a {
+    text-decoration: none;
+    color: white;
+}
+
+.right {
+    height: 250px;
+    width: 475px;
+    border: 1px solid #aaa;
+    border-radius: .3rem !important;
+}
+
+.right a {
+    text-decoration: none;
+    color: white;
+}
+
+span {
+    font-size: 28px;
+}
+
+.cancuu {
+    border: none;
+    background-color: #b80419;
+    color: white;
+    width: 250px;
+    height: 90px;
+    margin-left: 25px;
+    line-height: 10px;
+    text-align: center;
+    border-radius: .3rem !important;
+    font-size: 18px;
+}
+
+.dacuu {
+    border: none;
+    background-color: #28a745;
+    color: white;
+    width: 250px;
+    height: 90px;
+    margin-left: 10px;
+    line-height: 10px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: .3rem !important;
+}
+
+.sansang {
+    border: none;
+    background-color:#28a745;
+    color: white;
+    width: 250px;
+    height: 90px;
+    margin-left: 10px;
+    font-size: 24px;
+    line-height: 10px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: .3rem !important;
+    margin-left: 65px;
+}
+
+.dknhancuutro {
+    border: none;
+    background-color: #28649d;
+    height: 30px;
+    margin-left: 25px;
+    border-radius: .3rem !important;
+    color: white;
+}
+
+.dkungho {
+    border: none;
+    background-color: #28649d;
+    height: 30px;
+    margin-left: 25px;
+    border-radius: .3rem !important;
+    color: white;
+}
+
+.banner img {
+    height: 300px;
+    width: 1000px;
+    margin-left: 200px;
+}
+
+#footer {
+    height: 200px;
+    background: #2e3338;
+    color: white;
+    margin-top: 50px;
+}
+
+h2 {
+    margin-top: 0px;
+    margin-left: 20px;
+}
+
+#footer span {
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+#footer p {
+    margin-left: 20px;
+}
+
+#footer a {
+    color: white;
+}
