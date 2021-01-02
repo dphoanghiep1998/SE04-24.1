@@ -30,7 +30,7 @@
   - Ngôn ngữ : Javascript
  ## Công cụ :
   - Deployment : Heroku sever
-  - Editor : Vscode
+  - Tool : Vscode,Git
 # Demo
   - FanPage : https://www.facebook.com/ChatBot-V%C3%AC-mi%E1%BB%81n-Trung-101198895190244/
   - App-link : https://vutranapp.herokuapp.com/
