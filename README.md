@@ -31,7 +31,7 @@
  ## Công cụ :
   - Deployment : Heroku sever
   - Tool : Vscode,Git
-# Demo
+# Demo :
   - FanPage : https://www.facebook.com/ChatBot-V%C3%AC-mi%E1%BB%81n-Trung-101198895190244/
   - App-link : https://vutranapp.herokuapp.com/
 
