@@ -21,7 +21,7 @@
   - Đáp ứng nhu cầu cần thiết của chatbot là thu thập thông tin
   - Bảo trì, nâng cấp ( nếu cần thiết )
   
-# Cấu trúc của project:
+# Kiến trúc của project:
   
   
 # Công nghệ và công cụ sử dụng :
@@ -31,9 +31,23 @@
  ## Công cụ :
   - Deployment : Heroku sever
   - Tool : Vscode,Git
+  - Platform : Messenger Facebook
+  - ML-tool : Wit.ai
 # Demo :
   - FanPage : https://www.facebook.com/ChatBot-V%C3%AC-mi%E1%BB%81n-Trung-101198895190244/
   - App-link : https://vutranapp.herokuapp.com/
-
-
+# Hướng dẫn sử dụng :
+  - Truy cập vào đường link Page hoặc App
+  - Bot được thiết lập để hiểu các ngôn ngữ chào ví dụ : Hi, hello, xin chào ,.. để bắt đầu trò chuyện có cấu trúc sẵn
+  - Để làm mới hội thoại gõ : Làm mới hội thoại hoặc chọn Làm mới hội thoại ở Menu chat nhanh
+# Bug/Fix bug :
+  - User nhập sai chưa thể tiến hành nhập lại lỗi sai mà phải nhập lại toàn bộ
+  - Wit.ai training vẫn còn 1 số  bug
+  
+# Tài liệu tham khảo :
+  - https://developers.facebook.com/docs/messenger-platform/getting-started/quick-start/
+  - https://nodejs.org/en/docs/
+  - https://stackoverflow.com/
+  - https://devcenter.heroku.com/
+  
 
