@@ -22,7 +22,8 @@
   - Bảo trì, nâng cấp ( nếu cần thiết )
   
 # Kiến trúc của project:
-  
+  ![chatbot2](https://user-images.githubusercontent.com/72801957/103482998-ce296b00-4e16-11eb-9024-1e83b78304f5.png)
+
   
 # Công nghệ và công cụ sử dụng :
  ## Công nghệ :
